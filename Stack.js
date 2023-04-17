@@ -42,4 +42,4 @@ s.length();
 
 s.isEmpty();
 
-export default Stack;
+module.exports = Stack;
