@@ -3,7 +3,6 @@
 class Stack {
   constructor() {
     this.stack = [];
-    let index = 0;
   }
 
   push(element) {
