@@ -49,7 +49,41 @@ function maxSubArray(nums) {
 
   for (let i = 0; i < nums.length; i++) {
     sum += nums[i];
-    max = Math.max(sum, max);
+    if (sum > max) {
+      max = sum;
+    }
+
+    if (sum < 0) {
+      sum = 0;
+    }
+  }
+
+  return max;
+}
+
+// Get indexes of maximum subarray sum
+// Optimal solution - Kadane's Algorithm
+// Time complexity - O(N)
+// Space complexity - O(1)
+function maxSubArray(nums) {
+  let max = Number.MIN_SAFE_INTEGER;
+  let sum = 0;
+  let start = -1;
+
+  // Index range of maximum subarray sum
+  let startIndex = -1;
+  let endIndex = -1;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (sum === 0) start = i;
+
+    sum += nums[i];
+
+    if (sum > max) {
+      max = Math.max(sum, max);
+      startIndex = start;
+      endIndex = i;
+    }
 
     if (sum < 0) {
       sum = 0;
