@@ -12,7 +12,7 @@ function sortColors1(nums) {
 }
 
 // Better solution
-// Time complexity - O(n)
+// Time complexity - O(2n) = O(n)
 // Space complexity - O(1)
 function sortColors2(nums) {
   let countZero = 0;

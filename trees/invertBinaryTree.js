@@ -7,12 +7,6 @@
  * Output: [4,7,2,9,6,3,1]
  */
 
-function TreeNode(val, left, right) {
-  this.val = val === undefined ? 0 : val;
-  this.left = left === undefined ? null : left;
-  this.right = right === undefined ? null : right;
-}
-
 function invertTree(root) {
   if (root === null) return root;
 
