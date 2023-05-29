@@ -1,16 +1,45 @@
 const BinaryTreeNode = require('./BinaryTreeNode');
 const prompt = require('prompt-sync')({ sigint: true });
 
+function nodeGreaterThanX(root, x) {
+  if (root === null) return 0;
+
+  const leftResult = nodeGreaterThanX(root.left);
+  const rightResult = nodeGreaterThanX(root.right);
+  const rootResult = root.val > x ? 1 : 0;
+
+  return rootResult + leftResult + rightResult;
+}
+
+function largestNode(root) {
+  if (root === null) return -1;
+
+  const leftLargestData = largestNode(root.left);
+  const rightLargestData = largestNode(root.right);
+
+  return Math.max(root.val, Math.max(leftLargestData, rightLargestData));
+}
+
+function sumOfNodes(root) {
+  if (root === null) return 0;
+  return root.val + sumOfNodes(root.left) + sumOfNodes(root.right);
+}
+
+function numOfNodes(root) {
+  if (root === null) return 0;
+  return 1 + numOfNodes(root.left) + numOfNodes(root.right);
+}
+
 function takeTreeInputBetter(isRoot, parentData, isLeft) {
   let data;
 
   if (isRoot) {
-    data = prompt(`Enter root data: `);
+    data = Number(prompt(`Enter root data: `));
   } else {
     if (isLeft) {
-      data = prompt(`Enter left child of ${parentData}: `);
+      data = Number(prompt(`Enter left child of ${parentData}: `));
     } else {
-      data = prompt(`Enter right child of ${parentData}: `);
+      data = Number(prompt(`Enter right child of ${parentData}: `));
     }
   }
 
@@ -79,5 +108,17 @@ function printTreeDetailed(root) {
 // const root = takeTreeInput();
 const root = takeTreeInputBetter(true, null, false);
 printTreeDetailed(root);
+
+// const numOfNodesResult = numOfNodes(root);
+// console.log(`The number of nodes in the given tree is ${numOfNodesResult}`);
+
+// const sumOfNodesResult = sumOfNodes(root);
+// console.log(`sum number of nodes in the given tree is ${sumOfNodesResult}`);
+
+// const largestNodeResult = largestNode(root);
+// console.log(`The node with the largest data is ${largestNodeResult}`);
+
+const nodeGreaterThanXResult = nodeGreaterThanX(root, 20);
+console.log(`The nodes greater than 20 are ${nodeGreaterThanXResult}`);
 
 module.exports = { takeTreeInputBetter, printTreeDetailed };
