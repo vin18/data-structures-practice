@@ -1,6 +1,42 @@
 const BinaryTreeNode = require('./BinaryTreeNode');
 const prompt = require('prompt-sync')({ sigint: true });
 
+function printNodesWithoutSibling(root) {
+  if (root === null) return;
+
+  if (root.left !== null && root.right === null) {
+    console.log(root.left.val);
+  }
+
+  if (root.right !== null && root.left === null) {
+    console.log(root.right.val);
+  }
+}
+
+function isNodePresent(root, x) {
+  if (root === null) return false;
+  if (root.val === x) return true;
+
+  return isNodePresent(root.left) || isNodePresent(root.right);
+}
+
+// TODO:
+function replaceNodesWithDepth(root) {}
+
+// TODO:
+function printNodesAtDepthK(root, k) {}
+
+function numOfLeafNodes(root) {
+  let count = 0;
+  if (root === null) return count;
+
+  if (root.left === null && root.right === null) {
+    count++;
+  }
+
+  return count + numOfLeafNodes(root.left) + numOfLeafNodes(root.right);
+}
+
 function nodeGreaterThanX(root, x) {
   if (root === null) return 0;
 
@@ -118,7 +154,12 @@ printTreeDetailed(root);
 // const largestNodeResult = largestNode(root);
 // console.log(`The node with the largest data is ${largestNodeResult}`);
 
-const nodeGreaterThanXResult = nodeGreaterThanX(root, 20);
-console.log(`The nodes greater than 20 are ${nodeGreaterThanXResult}`);
+// const nodeGreaterThanXResult = nodeGreaterThanX(root, 20);
+// console.log(`The nodes greater than 20 are ${nodeGreaterThanXResult}`);
+
+const numOfLeafNodesResult = numOfLeafNodes(root);
+console.log(
+  `The number of leaf nodes in the given tree are ${numOfLeafNodesResult}`
+);
 
 module.exports = { takeTreeInputBetter, printTreeDetailed };
