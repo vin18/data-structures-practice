@@ -18,12 +18,13 @@ function rearrangeElementsBySign(nums) {
     }
   }
 
-  for (let i = 0; i < nums.length; i++) {
-    nums[2 * i] = positiveArray[i];
-    nums[2 * (i + 1)] = negativeArray[i];
+  const result = [];
+  for (let i = 0; i < nums.length / 2; i++) {
+    result[2 * i] = positiveArray[i];
+    result[2 * i + 1] = negativeArray[i];
   }
 
-  return nums;
+  return result;
 }
 
 // Variety 1 (If both have even number of -ve and +ve elements)
@@ -72,7 +73,7 @@ function rearrangeElementsBySign2(nums) {
 
     let index = negativeArray.length * 2;
     for (let i = index; i < positiveArray.length; i++) {
-      nums[index] = positiveArray[i];
+      nums[index++] = positiveArray[i];
     }
   } else {
     for (let i = 0; i < positiveArray.length; i++) {
@@ -82,7 +83,7 @@ function rearrangeElementsBySign2(nums) {
 
     let index = positiveArray.length * 2;
     for (let i = index; i < negativeArray.length; i++) {
-      nums[index] = negativeArray[i];
+      nums[index++] = negativeArray[i];
     }
   }
 }
