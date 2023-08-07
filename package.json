@@ -1,5 +1,24 @@
 {
   "dependencies": {
+    "jest": "^29.6.2",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "name": "dsa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vin18/data-structures-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vin18/data-structures-practice/issues"
+  },
+  "homepage": "https://github.com/vin18/data-structures-practice#readme",
+  "description": ""
 }
