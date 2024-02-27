@@ -8,19 +8,41 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 
-function middleNode(head) {
-  if (head === null || head.next === null) return head;
+// Time Complexity - O(2N) ~ O(N)
+// Space Complexity - O(1)
+function middleNode1 = function(head) {
+    if (head === null || head.next === null) return head;
 
-  let slow = head;
-  let fast = head;
+    let temp = head;
+    let count = 0;
+    while (temp !== null) {
+        temp = temp.next;
+        count++;
+    }
 
-  while (fast !== null && fast.next !== null) {
-    slow = slow.next;
-    fast = fast.next.next;
-  }
+    const mid = Math.floor(count / 2);
+    count = 0;
+    temp = head;
+    while (temp !== null) {
+        if (count == mid) return temp;
+        count++;
+        temp = temp.next;
+    }
+};
 
-  return slow;
-}
+// Time Complexity - O(N/2) ~ O(N)
+// Space Complexity - O(1)
+function middleNode = function(head) {
+    if (head === null || head.next === null) return head;
+
+    let slow = head, fast = head;
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    } 
+
+    return slow;
+};
 
 const node1 = new ListNode(10);
 const node2 = new ListNode(20);
