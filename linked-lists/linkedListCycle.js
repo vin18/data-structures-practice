@@ -8,23 +8,32 @@ function ListNode(val) {
   this.next = null;
 }
 
-function hasCycle(head) {
-  if (head === null) return false;
-
-  let slow = head;
-  let fast = head;
-
-  while (fast !== null && fast.next !== null) {
-    slow = slow.next;
-    fast = fast.next.next;
-
-    if (slow === fast) {
-      return true;
+// Brute force solution
+// Time Complexity - O(N)
+// Space Complexity - O(N)
+const hasCycle = (head) => {    
+    const map = new Map();
+    let temp = head;
+    while (temp) {
+        if (map.has(temp)) return true;
+        map.set(temp, true);
+        temp = temp.next;
     }
-  }
+    return false;
+};
 
-  return false;
-}
+// Optimal solution
+// Time Complexity - O(N)
+// Space Complexity - O(1)
+function hasCycle(head) => {    
+    let fast = head, slow = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow === fast) return true;
+    }
+    return false;
+};
 
 const node1 = new ListNode(10);
 const node2 = new ListNode(20);
